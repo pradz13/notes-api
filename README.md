@@ -19,3 +19,9 @@ Flyway keeps the history of script executions in the flyway_schema_history table
 
 Database vendor specific scripts can be kept like this -
 spring.flyway.locations=classpath:/db/migration/{vendor}
+
+DTO projection
+--------------
+JPA entities can be mapped to DTOs in the following manner -
+@Query("select new com.pradipta.notes.api.domain.NoteDTO(n.id, n.title, n.content, n.createdAt) from Note n")
+Page<NoteDTO> findBookmarks(Pageable pageable);
