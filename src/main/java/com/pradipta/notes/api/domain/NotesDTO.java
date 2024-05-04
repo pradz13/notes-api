@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 @Getter
 public class NotesDTO {
-    private List<Note> data;
+    private List<NoteDTO> data;
     private long totalElements;
     private int totalPages;
     private int currentPage;
@@ -23,7 +23,7 @@ public class NotesDTO {
     private boolean hasPrevious;
     private boolean hasNext;
 
-    public NotesDTO(Page<Note> notePage) {
+    public NotesDTO(Page<NoteDTO> notePage) {
         this.data = notePage.getContent();
         this.totalElements = notePage.getTotalElements();
         this.totalPages = notePage.getTotalPages();
