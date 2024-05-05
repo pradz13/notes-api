@@ -33,3 +33,32 @@ Adding the following in the Junit test case enables the TestContainers.
 "spring.datasource.url=jdbc:tc:postgresql:14-alpine:///demo"
 })
 Docker should already be running to make the test run.
+
+Build the Docker Image
+----------------------
+Add the following Maven plugin -
+<build>
+<plugins>
+<plugin>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-maven-plugin</artifactId>
+<configuration>
+<image>
+<name>nagpradipta1985/notes-api</name>
+</image>
+<excludes>
+<exclude>
+<groupId>org.projectlombok</groupId>
+<artifactId>lombok</artifactId>
+</exclude>
+</excludes>
+</configuration>
+</plugin>
+</plugins>
+</build>
+
+Run the following Maven command to build the image -
+./mvnw spring-boot:build-image
+
+Built image can be run with the command -
+docker run -p 8080:8080 nagpradipta1985/notes-api
