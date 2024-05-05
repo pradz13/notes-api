@@ -25,3 +25,11 @@ DTO projection
 JPA entities can be mapped to DTOs in the following manner -
 @Query("select new com.pradipta.notes.api.domain.NoteDTO(n.id, n.title, n.content, n.createdAt) from Note n")
 Page<NoteDTO> findBookmarks(Pageable pageable);
+
+Integration test with TestContainers
+------------------------------------
+Adding the following in the Junit test case enables the TestContainers.
+@TestPropertySource(properties = {
+"spring.datasource.url=jdbc:tc:postgresql:14-alpine:///demo"
+})
+Docker should already be running to make the test run.
